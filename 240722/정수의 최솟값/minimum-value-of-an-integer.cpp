@@ -6,8 +6,8 @@ int main() {
     int a,b,c;
     cin >> a >> b >> c;
     int min = a;
-    if(a > c && b > c){ min = c;}
-    if(a > b && c > b){ min = b;}
+    if(a >= c && b >= c){ min = c;}
+    if(a >= b && c >= b){ min = b;}
     cout << min;
     return 0;
 }
