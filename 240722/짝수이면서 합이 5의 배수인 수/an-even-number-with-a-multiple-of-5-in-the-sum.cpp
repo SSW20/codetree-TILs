@@ -8,5 +8,6 @@ int main() {
     x = n / 10;
     y = n % 10;
     if((x + y) % 5 == 0 && n % 2 == 0) cout << "Yes";
+    else cout << "No";
     return 0;
 }
