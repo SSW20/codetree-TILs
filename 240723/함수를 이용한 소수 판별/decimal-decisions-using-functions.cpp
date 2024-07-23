@@ -15,10 +15,10 @@ int main() {
     cin >> a >> b;
     
     int total = 0;
-    for(int i=a+1; i<=b; ++i){
+    for(int i=a; i<=b; ++i){
         if(isValid(i)) total +=i; 
     }
-
-    cout << total;
+    if(total == 1) cout << 0;
+    else cout << total;
     return 0;
 }
