@@ -1,19 +1,17 @@
 #include <iostream>
 using namespace std;
 
-int temp = 1;
 
 void descending(int n){
     if(n == 0) return;
     cout << n << ' ';
-    return descending(n-1);
+    descending(n-1);
 }
 
 void ascending(int n){
-    if(n < temp) return;
-    cout << temp << ' ';
-    temp++;
-    return ascending(n);
+    if(n == 0) return;
+    ascending(n-1);
+    cout << n << ' ';
 }
 
 int main() {
