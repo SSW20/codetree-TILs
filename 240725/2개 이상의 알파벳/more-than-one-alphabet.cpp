@@ -6,7 +6,7 @@ bool isValid(int *count, string s){
     int cnt = 0;
     for(char c : s){
         if(count[c - 'a'] == 0) {
-            if(cnt > 1) return true;
+            if(cnt >= 1) return true;
             else ++cnt;
             ++count[c-'a'];
         }
