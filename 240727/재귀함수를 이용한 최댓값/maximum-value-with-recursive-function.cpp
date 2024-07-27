@@ -4,7 +4,7 @@ using namespace std;
 int *arr;
 int ans = 0;
 int max(int idx){
-    if(idx == 0) return ans;
+    if(idx == -1) return ans;
     if(arr[idx] > ans) ans = arr[idx];
     return max(idx-1);
 }
