@@ -7,20 +7,21 @@ int main() {
     int n;
     cin >> n;
 
-    int *arr = new int[n];
+    int *arr = new int[2*n];
     for(int i=0; i<2*n; ++i) cin >> arr[i];
 
-    sort(arr, arr+n);
+    sort(arr, arr+2*n);
 
-    int n1=0,n2=0;
-    for(int i=0; i<2*n-1; i+=2)
-    {
-        n1 += arr[i];
-        n2 += arr[i+1];
+    int left = 0;
+    int right = 2*n-1;
+    int max = 0; 
+    while(left > right){
+        if(arr[left] + arr[right] > max ) max = arr[left] + arr[right]; 
+        left++;
+        right--;
     }
-
-    if(n1 > n2) cout << n1;
-    else cout << n2;
+    cout << max;
+    
 
     
     return 0;
