@@ -15,7 +15,7 @@ int main() {
     int left = 0;
     int right = 2*n-1;
     int max = 0; 
-    while(left > right){
+    while(left < right){
         if(arr[left] + arr[right] > max ) max = arr[left] + arr[right]; 
         left++;
         right--;
