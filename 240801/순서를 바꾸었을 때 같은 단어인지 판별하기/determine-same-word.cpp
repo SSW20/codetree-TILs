@@ -5,25 +5,24 @@ using namespace std;
 
 int main() {
     // 여기에 코드를 작성해주세요.
-    int arr[100];
-    int arr2[100];
-    fill(arr, arr+100, 0);
-    fill(arr2, arr2+100, 0);
-    string s,s2;
-    cin >> s >> s2;
+   string s,s2;
+   cin >> s  >> s2;
+   sort(s.begin(), s.end());
+   sort(s2.begin(), s2.end());
 
-    for(char c : s) {arr[c]++;}
-    for(char c : s2) {arr2[c]++;}
+   if(s.length() != s2.length()) {
+    cout << "No";
+    return 0;
+   }
 
-    for(int i=0;i<26; ++i) {
-        if(arr[i] != arr2[i]) {
-            cout << "No";
-            return 0;
-        }
+   for(int i=0;i<s.length(); ++i){
+    if(s[i] != s2[i]) {
+        cout << "No";
+    return 0;
     }
+   }
+
     cout << "Yes";
-
-
 
     return 0;
 }
