@@ -31,9 +31,9 @@ int main() {
     }
 
     sort(v.begin(),v.end());
-    cout << "name " << v[0]->name << '\n';
-    cout << "addr " << v[0]->addr << '\n';
-    cout << "city " << v[0]->city << '\n';
+    cout << "name " << v[n-1]->name << '\n';
+    cout << "addr " << v[n-1]->addr << '\n';
+    cout << "city " << v[n-1]->city << '\n';
     
 
     return 0;
