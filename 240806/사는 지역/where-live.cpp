@@ -14,26 +14,30 @@ class Person{
             this->addr = a;
             this->city = c;
         }
-};
 
+        
+};
+bool compare(const Person& a, const Person& b){
+            return a.name < b.name;
+        }
 int main() {
     // 여기에 코드를 작성해주세요.
     string name;
     string addr;
     string city;
 
-    vector<Person*> v;
+    vector<Person> v;
     int n;
     cin>> n;
     for(int i=0;i<n;++i){
         cin >> name >> addr >> city;
-        v.push_back(new Person(name,addr,city));
+        v.push_back(Person(name,addr,city));
     }
 
-    sort(v.begin(),v.end());
-    cout << "name " << v[n-1]->name << '\n';
-    cout << "addr " << v[n-1]->addr << '\n';
-    cout << "city " << v[n-1]->city << '\n';
+    sort(v.begin(),v.end(), compare);
+    cout << "name " << v[n-1].name << '\n';
+    cout << "addr " << v[n-1].addr << '\n';
+    cout << "city " << v[n-1].city << '\n';
     
 
     return 0;
