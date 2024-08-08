@@ -20,8 +20,10 @@ public:
 };
 
 bool comp(const Student& a, const Student& b) {
-    if (a.english == b.english) return a.math > b.math;
-    else if (a.korean == b.korean) return a.english > b.english;
+    if (a.korean == b.korean) { 
+        if (a.english == b.english) return a.math > b.math;
+        else return a.english > b.english; 
+    }
     else return a.korean > b.korean;
 }
 
