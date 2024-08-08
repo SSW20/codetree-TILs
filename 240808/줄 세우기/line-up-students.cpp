@@ -18,7 +18,7 @@ public:
 bool comp(const Student& a, const Student& b) {
     if (a.h == b.h) {
         if (a.w == b.w) return a.idx < b.idx;
-        else a.w > b.w;
+        else return a.w > b.w;
     }
     else return a.h > b.h;
 }
