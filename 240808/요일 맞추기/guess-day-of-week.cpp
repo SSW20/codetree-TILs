@@ -15,7 +15,7 @@ int main() {
     
     
     days += d2 - d1;
-    while (days > 0) { days += 7; }
+    while (days < 0) { days += 7; }
     cout << day[days % 7];
     return 0;
 }
