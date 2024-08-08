@@ -41,6 +41,8 @@ int main() {
     sort(v.begin(), v.end(), comp2);
 
     cout << "name\n";
+    cout << fixed;
+    cout.precision(1);
     for (int i = 0; i < 5; ++i) {
         cout  << v[i].name << ' ' << v[i].h << ' ' << v[i].w  << '\n';
     }
