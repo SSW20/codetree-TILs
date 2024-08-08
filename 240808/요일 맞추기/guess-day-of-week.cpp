@@ -10,19 +10,17 @@ int main() {
     int m1, d1, m2, d2;
     cin >> m1 >> d1 >> m2 >> d2;
 
-    bool flag = true;
-    if (m1 < m2) {
-        int tmp = m1;
-        m1 = m2;
-        m2 = tmp;
-        flag = false;
-    }
-    for (int i = m1; i < m2; ++i) { days += num_of_days[i]; }
-    if (!flag) - days;
+    int prev = 0, next = 0;
+    for (int i = 0; i < m1; ++i) { prev += num_of_days[i]; }
+    for (int i = 0; i < m2; ++i) { next += num_of_days[i]; }
+    prev += d1;
+    next += d2;
 
-    
-    days += d2 - d1;
-    while (days < 0) { days += 7; }
+    days = -prev + next;
+    while (days < 0) {
+        days += 7;
+    }
+
     cout << day[days % 7];
     return 0;
 }
