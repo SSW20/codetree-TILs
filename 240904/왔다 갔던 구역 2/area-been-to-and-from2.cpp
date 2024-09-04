@@ -12,11 +12,11 @@ int main() {
 	while (n-- > 0) {
 		cin >> a >> c;
 		if (c == 'R') {
-			for (int i = loc; i < a + loc; ++i) arr[i] += 1;
+			for (int i = 0; i < a; ++i) arr[i + loc] += 1;
 			loc = loc + a;
 		}
 		else {
-			for (int i = loc; i > loc - a; --i) arr[i] += 1;
+			for (int i = 0; i < a; ++i) arr[loc - i] += 1;
 			loc = loc - a;
 		}
 	}
