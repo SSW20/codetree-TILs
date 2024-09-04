@@ -16,7 +16,7 @@ int main() {
 			loc = loc + a;
 		}
 		else {
-			for (int i = 0; i < a; ++i) arr[loc - i] += 1;
+			for (int i = 1; i <= a; ++i) arr[loc - i] += 1;
 			loc = loc - a;
 		}
 	}
