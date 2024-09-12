@@ -44,8 +44,8 @@ int main() {
 			}
 		}
 	}
-	if (maxX < 0) cout << 0;
-	else cout << (maxX - minX + 1) * (maxY - minY + 1);
+
+	cout << (maxX - minX + 1) * (maxY - minY + 1);
 
 	return 0;
 }
