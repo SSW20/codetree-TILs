@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 
-	vector<vector<int>> v(2001, vector<int>(2001));
+	vector<vector<int>> v(2010, vector<int>(2010));
 	int N = 2;
 	int flag = true;
 	while (N-- > 0) {
@@ -27,8 +27,8 @@ int main() {
 	}
 
 	int maxX = -1, maxY = -1, minX = 10000, minY = 10000;
-	for (int i = 0; i < 2001; ++i) {
-		for (int k = 0; k < 2001; ++k) {
+	for (int i = 0; i < 2010; ++i) {
+		for (int k = 0; k < 2010; ++k) {
 			{
 				if (v[i][k] == 1) {
 					if (maxX <= k && maxY <= i) {
