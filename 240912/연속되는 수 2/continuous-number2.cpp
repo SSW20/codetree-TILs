@@ -20,5 +20,6 @@ int main() {
 		cur = x;
 	}
 
+	if (max < cnt) max = cnt;
 	cout << max;
 }
