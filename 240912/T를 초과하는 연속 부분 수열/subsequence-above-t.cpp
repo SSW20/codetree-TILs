@@ -14,11 +14,11 @@ int main() {
 	for (int i = 0; i < n-1; ++i) {
 		if (v[i] > t && v[i+1] > t) ++cnt;
 		else {
-			cnt = 1;
+			cnt = 0;
 		}
 		if (max < cnt) max = cnt;
  	}
 	
-	cout << max;
+	cout << max + 1;
 	return 0;
 }
