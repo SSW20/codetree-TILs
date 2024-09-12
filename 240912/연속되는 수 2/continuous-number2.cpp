@@ -3,23 +3,22 @@
 using namespace std;
 
 int main() {
-	int cnt = 1;
-	int max = 0;
-	int x, cur;
 	int n;
-
 	cin >> n;
-	cin >> x;
-	cur = x;
-	n--;
-	
-	if (n == 0) { cout << 1; return 0; }
+	vector<int> v(n);
 
-	while (n-- > 0) {
-		cin >> x;
-		if (cur == x) ++cnt;
-		else { if (max < cnt) { max = cnt; cnt = 1; } }
-		cur = x;
-	}
+	for (int i = 0; i < n; ++i) cin >> v[i];
+
+	int cnt = 1;
+	int max = 1;
+	for (int i = 0; i < n-1; ++i) {
+		if (v[i] == v[i + 1]) ++cnt;
+		else {
+			cnt = 1;
+		}
+		if (max < cnt) max = cnt;
+ 	}
+	
 	cout << max;
+	return 0;
 }
