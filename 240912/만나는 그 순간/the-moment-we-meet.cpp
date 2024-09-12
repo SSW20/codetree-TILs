@@ -39,8 +39,11 @@ int main() {
 		}
 	}
 
+	int ans = -1;
 	for (int i = 1; i < 1000001; ++i) {
-		if (v[i] == v2[i]) { cout << i; break; }
+		if (v[i] == v2[i]) { ans = i;  break; }
 	}
+
+	cout << ans;
 	return 0;
 }
