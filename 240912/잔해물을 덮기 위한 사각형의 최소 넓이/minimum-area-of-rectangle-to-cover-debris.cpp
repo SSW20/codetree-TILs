@@ -26,26 +26,24 @@ int main() {
 		flag = false;
 	}
 
-	int maxX = -1, maxY = -1, minX = 10000, minY = 10000;
-	for (int i = 0; i < 2010; ++i) {
-		for (int k = 0; k < 2010; ++k) {
+	flag = false;
+	int maxX = 0, maxY = 0, minX = 2000, minY = 2000;
+	for (int i = 0; i <= 2000; ++i) {
+		for (int k = 0; k <= 2000; ++k) {
 			{
 				if (v[i][k] == 1) {
-					if (maxX <= k && maxY <= i) {
-						maxX = k;
-						maxY = i;
-					}
-					if (minX >= k && minY >= i) {
-						minX = k;
-						minY = i;
-					}
+					flag = true;
+					if (maxX < k) maxX = k;
+					if (minX > k) minX = k;
+					if (maxY < i) maxY = i;
+					if (minY > i) minY = i;
 				}
 
 			}
 		}
 	}
-
-	cout << (maxX - minX + 1) * (maxY - minY + 1);
+	if (!flag) cout << 0;
+	else cout << (maxX - minX + 1) * (maxY - minY + 1);
 
 	return 0;
 }
