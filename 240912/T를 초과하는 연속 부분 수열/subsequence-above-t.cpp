@@ -10,7 +10,7 @@ int main() {
 	for (int i = 0; i < n; ++i) cin >> v[i];
 
 	int cnt = 1;
-	int max = 1;
+	int max = 0;
 	for (int i = 0; i < n-1; ++i) {
 		if (v[i] > t && v[i+1] > t) ++cnt;
 		else {
