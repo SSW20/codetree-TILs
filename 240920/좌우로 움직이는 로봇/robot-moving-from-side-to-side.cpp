@@ -37,7 +37,7 @@ int main() {
 	}
 
 	int cnt = 0;
-	for (int i = 0; i < 1000000; ++i) {
+	for (int i = 1; i < idx; ++i) {
 		if (a[i] != b[i] && a[i + 1] == b[i + 1]) ++cnt;
 	}
 
