@@ -22,6 +22,8 @@ int main() {
 		}
 	}
 
+	for (; idx < 1000001; ++idx) { a[idx] = a[idx - 1]; }
+
 	int idx2 = 1;
 	while (m-- > 0) {
 		cin >> t >> c;
@@ -35,10 +37,10 @@ int main() {
 			idx2++;
 		}
 	}
+	for (; idx2 < 1000001; ++idx2) { b[idx2] = b[idx2 - 1]; }
 
-	if (idx > idx2) idx = idx2;
 	int cnt = 0;
-	for (int i = 1; i < idx; ++i) {
+	for (int i = 1; i < 1000000; ++i) {
 		if (a[i] != b[i] && a[i + 1] == b[i + 1]) ++cnt;
 	}
 
