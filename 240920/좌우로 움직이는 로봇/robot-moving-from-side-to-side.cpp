@@ -22,20 +22,21 @@ int main() {
 		}
 	}
 
-	idx = 1;
+	int idx2 = 1;
 	while (m-- > 0) {
 		cin >> t >> c;
 		while (t-- > 0) {
 			if (c == 'L') {
-				b[idx] = b[idx - 1] - 1;
+				b[idx2] = b[idx2 - 1] - 1;
 			}
 			else {
-				b[idx] = b[idx - 1] + 1;
+				b[idx2] = b[idx2- 1] + 1;
 			}
-			idx++;
+			idx2++;
 		}
 	}
 
+	if (idx > idx2) idx = idx2;
 	int cnt = 0;
 	for (int i = 1; i < idx; ++i) {
 		if (a[i] != b[i] && a[i + 1] == b[i + 1]) ++cnt;
