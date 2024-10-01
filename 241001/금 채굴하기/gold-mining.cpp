@@ -24,6 +24,44 @@ int iDirX[4] = { 0, 1, 0, -1 };
 
 int iResult = 0;
 
+void LoopK(queue<pair<int, int>> _queDesc, int _iAcc, int _iK)
+{
+    queue<pair<int, int>> queTemp;
+
+    while (_queDesc.size())
+    {
+        int iCurY = _queDesc.front().first;
+        int iCurX = _queDesc.front().second;
+        _queDesc.pop();
+
+        for (int k = 0; k < 4; ++k)
+        {
+            int iNextY = iCurY + iDirY[k];
+            int iNextX = iCurX + iDirX[k];
+
+            if (iNextY < 0 || iNextY >= N || iNextX < 0 || iNextX >= N || bVisited[iNextY][iNextX])
+            {
+                continue;
+            }
+
+            _iAcc += iBoard[iNextY][iNextX];
+            queTemp.push({ iNextY, iNextX });
+            bVisited[iNextY][iNextX] = true;
+        }
+    }
+
+    if ((_iAcc * M) >= ((_iK * _iK) + (_iK + 1) * (_iK + 1)))
+    {
+        iResult = max(iResult, _iAcc);
+
+        if (queTemp.size())
+        {
+            LoopK(queTemp, _iAcc, _iK + 1);
+        }
+    }
+
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -47,53 +85,16 @@ int main()
         {
             bVisited[i][j] = true;
             int iAcc = iBoard[i][j];
-            int iBlk = 1;
+            queDesc.push({ i, j });
 
-            for (int k = 0; k < 4; ++k)
+            if (iAcc * M)
             {
-                int iNextY = i + iDirY[k];
-                int iNextX = j + iDirX[k];
-
-                if (iNextY < 0 || iNextY >= N || iNextX < 0 || iNextX >= N || bVisited[iNextY][iNextX])
-                {
-                    continue;
-                }
-
-                iAcc += iBoard[iNextY][iNextX];
-                queDesc.push({ iNextY, iNextX });
-                bVisited[iNextY][iNextX] = true;
+                iResult = max(iResult, 1);
             }
 
-            if ((iAcc * M) >= 5)
-            {
-                iResult = max(iResult, iAcc);
-            }
+            LoopK(queDesc, iAcc, 1);
 
-            while (queDesc.size())
-            {
-                int iCurY = queDesc.front().first;
-                int iCurX = queDesc.front().second;
-                queDesc.pop();
-
-                for (int t = 0; t < 4; ++t)
-                {
-                    int iNextY = iCurY + iDirY[t];
-                    int iNextX = iCurX + iDirX[t];
-
-                    if (iNextY < 0 || iNextY >= N || iNextX < 0 || iNextX >= N || bVisited[iNextY][iNextX])
-                    {
-                        continue;
-                    }
-
-                    iAcc += iBoard[iNextY][iNextX];
-                    bVisited[iNextY][iNextX] = true;
-                }
-            }
-
-            if ((iAcc * M) >= 13)
-            {
-                iResult = max(iResult, iAcc);
-            }
+            queDesc.pop();
 
             memset(bVisited, false, sizeof(bVisited));
         }
