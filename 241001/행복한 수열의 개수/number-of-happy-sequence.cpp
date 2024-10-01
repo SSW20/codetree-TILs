@@ -44,8 +44,8 @@ int main()
         {
             if (iBoard[i][j] == iBoard[i][j - 1])
             {
-                iAcc[i][j - 1] = 1;
                 iAcc[i][j] = iAcc[i][j - 1] + 1;
+                iAcc[i][j - 1] = 1;
             }
             else
             {
@@ -67,8 +67,8 @@ int main()
         {
             if (iBoard[j][i] == iBoard[j - 1][i])
             {
-                iAcc[j - 1][i] = 1;
                 iAcc[j][i] = iAcc[j - 1][i] + 1;
+                iAcc[j - 1][i] = 1;
             }
             else
             {
