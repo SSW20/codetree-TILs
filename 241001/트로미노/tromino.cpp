@@ -55,11 +55,16 @@ int main()
         }
     }
     
-    for (int i = 3; i <= N; ++i)
+    for (int i = 1; i <= N; ++i)
     {
-        for (int j = 3; j <= N; ++j)
+        for (int j = 3; j <= M; ++j)
         {
-            iResult = max(iResult, max(iBoard[i][j] + iBoard[i][j - 1] + iBoard[i][j - 2], iBoard[i][j] + iBoard[i - 1][j] + iBoard[i - 2][j]));
+            iResult = max(iResult, iBoard[i][j] + iBoard[i][j - 1] + iBoard[i][j - 2]);
+
+            if (i >= 3)
+            {
+                iResult = max(iResult, iBoard[i][j] + iBoard[i - 1][j] + iBoard[i - 2][j]);
+            }
         }
     }
 
