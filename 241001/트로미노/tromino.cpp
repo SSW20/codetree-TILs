@@ -50,7 +50,7 @@ int main()
                 if (iTempA <= 0 || iTempA > N || iTempB <= 0 || iTempB > M)
                     continue;
 
-                iResult = max(iResult, iBoard[i][j] + iTempA + iTempB);
+                iResult = max(iResult, iBoard[i][j] + iBoard[iTempA][j] + iBoard[i][iTempB]);
             }
         }
     }
