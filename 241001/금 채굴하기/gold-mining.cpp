@@ -53,13 +53,12 @@ void LoopK(queue<pair<int, int>> _queDesc, int _iAcc, int _iK)
     if ((_iAcc * M) >= ((_iK * _iK) + (_iK + 1) * (_iK + 1)))
     {
         iResult = max(iResult, _iAcc);
-
-        if (queTemp.size())
-        {
-            LoopK(queTemp, _iAcc, _iK + 1);
-        }
     }
 
+    if (queTemp.size())
+    {
+        LoopK(queTemp, _iAcc, _iK + 1);
+    }
 }
 
 int main()
