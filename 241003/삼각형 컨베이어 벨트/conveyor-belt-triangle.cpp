@@ -30,7 +30,7 @@ int main()
     {
         for (int j = 0; j < N; ++j)
         {
-            cin >> iNumArr[(i * 3) + j];
+            cin >> iNumArr[(i * N) + j];
         }
     }
 
