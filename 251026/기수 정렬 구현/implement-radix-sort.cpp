@@ -16,27 +16,12 @@ int main() {
 
     // Please write your code here.
     vector<queue<int>> vq(10);
-    for (int i = 0; i < n; i++) 
-    {
-        vq[arr[i] % 10].push(arr[i]);
-    }
-
-    int idx = 0;
-    for (int i = 0; i < 10; i++)
-    {
-        while (!vq[i].empty())
-        {
-            arr[idx] = vq[i].front();
-            vq[i].pop();
-            ++idx;
-        }
-    }
-
-    for (int i = 2; i < 6; ++i)
+ 
+    for (int i = 0; i < 7; ++i)
     {
         for (int k = 0;k < n; k++)
         {
-            int index  = arr[k] % int(pow(10, i)) / pow(10, i - 1);
+            int index  = arr[k] / int(pow(10, i)) % 10;
             vq[index].push(arr[k]);
         }
 
