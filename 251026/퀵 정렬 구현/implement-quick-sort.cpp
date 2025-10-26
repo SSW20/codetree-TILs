@@ -26,7 +26,7 @@ int partition(int start, int end)
         while (arr[start] < pivot) start++;
         while (arr[end] > pivot) --end;
 
-
+        if (start > end) break;
         int temp = arr[start];
         arr[start] = arr[end];
         arr[end] = temp; start++; --end;
