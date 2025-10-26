@@ -32,20 +32,21 @@ int main() {
         }
     }
 
-    for (int i = 1; i < 6; ++i)
+    for (int i = 2; i < 6; ++i)
     {
-        for (int i = 0; i < n; i++)
+        for (int k = 0;k < n; k++)
         {
-            vq[arr[i] / pow(10,1)].push(arr[i]);
+            int index  = arr[k] % int(pow(10, i)) / pow(10, i - 1);
+            vq[index].push(arr[k]);
         }
 
         int idx = 0;
-        for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
         {
-            while (!vq[i].empty())
+            while (!vq[k].empty())
             {
-                arr[idx] = vq[i].front();
-                vq[i].pop();
+                arr[idx] = vq[k].front();
+                vq[k].pop();
                 ++idx;
             }
         }
