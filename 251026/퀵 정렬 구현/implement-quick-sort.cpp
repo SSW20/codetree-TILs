@@ -10,11 +10,11 @@ void quickSort(int start, int end)
     int pivot = partition(start, end);
     if (start < pivot - 1)
     {
-        partition(start, pivot - 1);
+        quickSort(start, pivot - 1);
     }
     if (pivot < end)
     {
-        partition(pivot, end);
+        quickSort(pivot, end);
     }
 }
 
