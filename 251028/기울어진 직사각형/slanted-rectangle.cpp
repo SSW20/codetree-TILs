@@ -1,9 +1,32 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 int N;
 int grid[20][20];
+int dx[4] = { -1, 1, 1, -1 };
+int dy[4] = { 1, 1, -1, -1 };
+
+int answer(int i, int j, int k, int p)
+{
+    int x = j;
+    int y = i;
+    int move[4] = { k,p,k,p };
+    int ans = 0;
+    for (int idx = 0; idx < 4; ++idx)
+    {
+        for (int length = 0; length < move[idx]; ++length)
+        {
+            x += dx[idx];
+            y += dy[idx];
+
+            if (x < 0 || x >= N || y < 0 || y >= N) return 0;
+            ans += grid[y][x];
+        }
+    }
+    return ans;
+}
+
 
 int main() {
     cin >> N;
@@ -16,35 +39,21 @@ int main() {
 
     // Please write your code here.
 
-    int max = -1;
+    int ans = -1;
     for (int i = 0; i < N; i++) 
     {
         for (int j = 0; j < N; j++)
         {
-            if (i + 2 >= N || j + 1 >= N  || j - 1 < 0) continue;
-            int count = grid[i][j] + grid[i+ 1][j+1] + grid[i + 1][j - 1] + grid[i + 2][j];
-            int x = 2;
-            bool flag = true;
-            while(true)
+            for (int k = 1; k <= N; k++)
             {
-                if (i + x + 1 >= N || j - x < 0)
+                for (int p = 1; p <= N; p++)
                 {
-                    flag = false;
-                    break;
+                    ans = max(ans, answer(i, j, k, p));
                 }
-                else
-                {
-                    count += grid[i + x][j - x] + grid[i + 1 + x][j + 1 - x];
-                }
-                ++x;
-            }
-            if (count > max)
-            {
-                max = count;
             }
         }
     }
 
-    cout << max;
+    cout << ans;
     return 0;
 }
