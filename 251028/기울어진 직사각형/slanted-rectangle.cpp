@@ -21,7 +21,7 @@ int main() {
     {
         for (int j = 0; j < N; j++)
         {
-            if (i + 1 >= N || j + 1 >= N  || j - 1 < 0) continue;
+            if (i + 2 >= N || j + 1 >= N  || j - 1 < 0) continue;
             int count = grid[i][j] + grid[i+ 1][j+1] + grid[i + 1][j - 1] + grid[i + 2][j];
             int x = 2;
             bool flag = true;
