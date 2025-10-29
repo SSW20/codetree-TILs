@@ -1,81 +1,75 @@
-    #include <iostream>
-    #include <stack>
-    using namespace std;
+#include <iostream>
 
-    int n, m;
-    int numbers[100];
+using namespace std;
 
-    int main() {
-        cin >> n >> m;
-        stack<int> st;
-        for (int i = 0; i < n; i++) {
-            cin >> numbers[i];
-        }
+int n, m;
+int numbers[100];
+int temp[100];
 
-        int startIdx = n-1;
-        int count = 0;
-        int flag = -1;
-        int endIdx = n-1;
-        while (endIdx >= 0)
+int main() {
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+    }
+
+    // Please write your code here.
+    int length = n;
+    
+    bool flag = true;
+    do
+    {
+        flag = false;
+        int startIdx = 0;
+        for (int endIdx = 0; endIdx < length;)
         {
-            if (numbers[endIdx] == 0)
-            {
-                --endIdx;
+            if (numbers[endIdx] == 0) {
                 continue;
+                ++endIdx;
             }
-            if (flag == numbers[endIdx])
+            while (endIdx < length && numbers[endIdx] == numbers[startIdx])
             {
-                ++count;
-                --endIdx;
+                ++endIdx;
+            }
+
+            int count = endIdx - startIdx;
+            if (count >= m)
+            {
+                for (; startIdx < endIdx; ++startIdx)
+                {
+                    numbers[startIdx] = 0;
+                }
+                flag = true;
             }
             else
             {
-                if (count >= m)
-                {
-                    for (int i = startIdx; i > endIdx; --i)
-                    {
-                        numbers[i] = 0;
-                    }
-                    startIdx = n-1;
-                    flag = numbers[startIdx];
-                    endIdx = n-1;
-                    count = 0;
-                }
-                else
-                {
-                    startIdx = endIdx;
-                    flag = numbers[startIdx];
-                    --endIdx;
-                    count = 1;
-                }
+                startIdx = endIdx;
+                count = 0;
             }
+        }
+        if (flag)
+        {
+            int idx = 0;
+            for (int i = 0; i < length; ++i)
+            {
+                if (numbers[i] != 0) temp[idx++] = numbers[i];
+            }
+
+            for (int i = 0; i < length; ++i)
+            {
+                numbers[i] = temp[i];
+            }
+            for (int i = 0; i < length; ++i)
+            {
+               temp[i] = 0;
+            }
+            length = idx;
         }
 
-        if (count >= m)
-        {
-            for (int i = startIdx; i > endIdx; --i)
-            {
-                numbers[i] = 0;
-            }
-        }
+    } while (flag);
 
-        int ans = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (numbers[i] > 0)
-            {
-                ++ans;
-            }
-        }
-        cout << ans << '\n';
-        for (int i = 0; i < n; i++)
-        {
-            if (numbers[i] > 0)
-            {
-                cout << numbers[i] << '\n';
-            }
-        }
-        // Please write your code here.
-
-        return 0;
+    cout << length << '\n';
+    for (int i = 0; i < length; i++) {
+        cout << numbers[i] << '\n';
     }
+    return 0;
+}
