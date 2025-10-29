@@ -11,6 +11,7 @@ int main() {
     // Please write your code here.
     int n = A.size();
 
+    if (n == 1) { cout << 2; return 0; }
     char c[10];
     for (int i = 0; i < n; ++i)
     {
@@ -34,7 +35,7 @@ int main() {
         {
             if (flag != c[i])
             {
-               cachedCount += 2;
+               cachedCount += 3;
                flag = c[i];
                alpCount = 1;
             }
