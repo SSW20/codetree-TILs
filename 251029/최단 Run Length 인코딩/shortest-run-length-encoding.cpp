@@ -35,7 +35,7 @@ int main() {
         {
             if (flag != c[i])
             {
-               cachedCount += 3;
+               cachedCount += 2;
                flag = c[i];
                alpCount = 1;
             }
