@@ -10,31 +10,37 @@ int calculate(int r, int c, char d)
 	int x = r;
 	int y = c;
 	int count = 1;
-	while (!(x < 0 || y < 0 || x >= n || y >= n))
+	while (true)
 	{
+		if (x < 0 || y < 0 || x >= n || y >= n) break;
+		if (grid[x][y] == 1) {
+			if (d == 'U')  d = 'R';
+			else if (d == 'R')  d = 'U';
+			else if (d == 'D')  d = 'L';
+			else d = 'D';
+		}
+		if (grid[x][y] == 2) {
+			if (d == 'U')  d = 'L';
+			else if (d == 'R')  d = 'D';
+			else if (d == 'D')  d = 'R';
+			else d = 'U';
+		}
+
 		if (d == 'U')
 		{
-			if (grid[x][y] == 1) { d = 'R'; y++; }
-			else if (grid[x][y] == 2) { d = 'L'; y--; }
-			else x--;
+			x--;
 		}
 		else if (d == 'L')
 		{
-			if (grid[x][y] == 1) { d = 'D'; x++; }
-			else if (grid[x][y] == 2) { d = 'U'; x--; }
-			else y--;
+			y--;
 		}
 		else if (d == 'R')
 		{
-			if (grid[x][y] == 1) { d = 'U'; x--; }
-			else if (grid[x][y] == 2) { d = 'D'; x++; }
-			else y++;
+			y++;
 		}
 		else
 		{
-			if (grid[x][y] == 1) { d = 'L'; y--; }
-			else if (grid[x][y] == 2) { d = 'D'; y++; }
-			else x++;
+			x++;
 		}
 		++count;
 	}
@@ -54,6 +60,7 @@ int main() {
 		int temp = calculate(0, j, 'D');
 		ans = max(ans, temp);
 	}
+
 	for (int j = 0; j < n; j++)
 	{
 		int temp = calculate(j, n - 1, 'L');
