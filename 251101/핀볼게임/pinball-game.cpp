@@ -10,9 +10,8 @@ int calculate(int r, int c, char d)
 	int x = r;
 	int y = c;
 	int count = 1;
-	while (true)
+	while (!(x < 0 || y < 0 || x >= n || y >= n))
 	{
-		if (x < 0 || y < 0 || x >= n || y >= n) return count;
 		if (d == 'U')
 		{
 			if (grid[x][y] == 1) { d = 'R'; y++; }
