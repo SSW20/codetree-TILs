@@ -35,10 +35,19 @@ int main() {
         return 0;
     }
     search();
-    for (int i = k-1; i < k - 1 + m; ++i)
+    int idx = 99;
+    for (int i = k - 1; i < k - 1 + m; ++i)
     {
-        grid[temp[k-1]  - 1][i] = 1;
+        if (idx > temp[i])
+        {
+            idx = temp[i];
+        }
     }
+    for (int i = k - 1; i < k - 1 + m; ++i)
+    {
+        grid[idx - 1][i] = 1;
+    }
+    
     for (int i = 0; i < n; i++) 
     {
         for (int j = 0; j < n; j++) 
