@@ -28,6 +28,11 @@ int main() {
             cin >> grid[i][j];
         }
     }
+    if (n == 1)
+    {
+        cout << 1;
+        return;
+    }
     search();
     for (int i = k-1; i < k - 1 + m; ++i)
     {
@@ -37,7 +42,7 @@ int main() {
     {
         for (int j = 0; j < n; j++) 
         {
-            cout<<  grid[i][j] << ' ';
+            cout<< grid[i][j] << ' ';
         }
         cout << '\n';
     }
