@@ -35,8 +35,7 @@ int move(char dir, int count)
 			dq.push_front({ x, ++y, dir });
 		}
 
-		if (grid[x][y] > 0) { flag = false; return i; }
-		else if (grid[x][y] == -1) { grid[x][y] = 0; }
+		if (grid[x][y] == -1) { grid[x][y] = 0; }
 		else
 		{	
 			int bx = get<0>(dq.back());
@@ -44,6 +43,8 @@ int move(char dir, int count)
 			grid[bx][by] = 0;
 			dq.pop_back();
 		}
+		if (grid[x][y] > 0) { flag = false; return i; }
+
 		grid[x][y] = 1;
 	}
 	return count;
