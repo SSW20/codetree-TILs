@@ -17,6 +17,7 @@ void search()
                 break;
             }
         }
+        if (temp[i] == 0) temp[i] = n;
     }
 }
 
