@@ -31,11 +31,19 @@ int main() {
     {
         if (nextX <= 0 || nextY <= 0 || nextX > N || nextY > N) break;
         // 한칸 이동 시  벽이 있을 때  
-        while (grid[nextX + dx[d]][nextY + dy[d]] == '#')
+        int temp = 0;
+        while (grid[nextX + dx[d]][nextY + dy[d]] == '#' && temp < 4)
         {
             d = (d + 3) % 4;
+            ++temp;
+        }
+        if (temp == 4)
+        {
+            count = N * N + 1;
+            break;
         }
         // 없을 때
+
         if (grid[nextX + dx[d]][nextY + dy[d]] != '#')
         {
             // 벽있을때
