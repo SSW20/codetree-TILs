@@ -31,7 +31,7 @@ int main() {
     if (n == 1)
     {
         cout << 1;
-        return;
+        return 0;
     }
     search();
     for (int i = k-1; i < k - 1 + m; ++i)
