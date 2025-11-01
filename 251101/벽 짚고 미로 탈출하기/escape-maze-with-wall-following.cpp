@@ -20,57 +20,52 @@ int main() {
     }
     int  count = 0;
     int d = 0;
-    int nextX = x;
-    int nextY = y;
+    int curX = x;
+    int curY = y;
     if (grid[x][y] == '#') {
         cout << -1;
         return 0;
     }
-    grid[x][y] = 1;
     while (count <= N * N)
     {
-        if (nextX <= 0 || nextY <= 0 || nextX > N || nextY > N) break;
-        // 한칸 이동 시  벽이 있을 때  
-        int temp = 0;
-        while (grid[nextX + dx[d]][nextY + dy[d]] == '#' && temp < 4)
-        {
-            d = (d + 3) % 4;
-            ++temp;
-        }
-        if (temp == 4)
-        {
-            count = N * N + 1;
-            break;
-        }
-        // 없을 때
-
-        if (grid[nextX + dx[d]][nextY + dy[d]] != '#')
-        {
-            // 벽있을때
+        if (curX <= 0 || curY <= 0 || curX > N || curY > N) break;
             if (d == 0)
             {
-                if (grid[nextX + 1][nextY] != '#')
+                if (grid[curX + 1][curY] != '#')
                     d = (d + 1) % 4;
             }
             else if (d == 1)
             {
-                if (grid[nextX][nextY - 1] != '#')
+                if (grid[curX][curY - 1] != '#')
                     d = (d + 1) % 4;
             }
             else if (d == 2)
             {
-                if (grid[nextX - 1][nextY] != '#')
+                if (grid[curX - 1][curY] != '#')
                     d = (d + 1) % 4;
             }
             else
             {
-                if (grid[nextX][nextY + 1] != '#')
+                if (grid[curX][curY + 1] != '#')
                     d = (d + 1) % 4;
             }
-        }
+            if (grid[curX + dx[d]][curY + dy[d]] == '#')
+            {
+                int temp = 0;
+                while (grid[curX + dx[d]][curY + dy[d]] == '#' && temp < 4)
+                {
+                    d = (d + 3) % 4;
+                    ++temp;
+                }
+                if (temp == 4)
+                {
+                    count = N * N + 1;
+                    break;
+                }
+            }
 
-        nextX += dx[d];
-        nextY += dy[d];
+        curX += dx[d];
+        curY += dy[d];
         ++count;
 
     }
