@@ -57,12 +57,10 @@ int main()
 		if (maxX == -1 || maxY == -1) continue;
 
 		// 자신보다 작다면 Max 값 회수
-		if (gridMax[x][y] > gridMax[maxX][maxY])
+		if (num > gridMax[maxX][maxY])
 		{
-			gridMax[maxX][maxY] = gridMax[x][y];
+			gridMax[maxX][maxY] = num;
 		}
-		gridMax[x][y] = 0;
-
 
 		// 값 바꾸기
 		// 그 위치 부터 마지막까지 가져온 뒤 
@@ -77,6 +75,12 @@ int main()
 			numbers[*iter] = make_pair(maxX, maxY);
 		}
 		grid[x][y].erase(it, grid[x][y].end());
+		if (!grid[x][y].empty())
+		{
+			auto iter = max_element(grid[x][y].begin(), grid[x][y].end());
+			gridMax[x][y] = *iter;
+		}
+		else gridMax[x][y] = 0;
 	}
 
 	for (int i = 0; i < N; ++i)
