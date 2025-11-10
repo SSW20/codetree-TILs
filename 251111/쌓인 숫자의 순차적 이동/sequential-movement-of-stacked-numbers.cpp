@@ -56,12 +56,6 @@ int main()
 		}
 		if (maxX == -1 || maxY == -1) continue;
 
-		// 자신보다 작다면 Max 값 회수
-		if (num > gridMax[maxX][maxY])
-		{
-			gridMax[maxX][maxY] = num;
-		}
-
 		// 값 바꾸기
 		// 그 위치 부터 마지막까지 가져온 뒤 
 		// 다음 위치에 삽입
@@ -74,13 +68,22 @@ int main()
 		{
 			numbers[*iter] = make_pair(maxX, maxY);
 		}
+
 		grid[x][y].erase(it, grid[x][y].end());
+
 		if (!grid[x][y].empty())
 		{
 			auto iter = max_element(grid[x][y].begin(), grid[x][y].end());
 			gridMax[x][y] = *iter;
 		}
 		else gridMax[x][y] = 0;
+
+		if (!grid[maxX][maxY].empty())
+		{
+			auto iter = max_element(grid[maxX][maxY].begin(), grid[maxX][maxY].end());
+			gridMax[maxX][maxY] = *iter;
+		}
+		else gridMax[maxX][maxY] = 0;
 	}
 
 	for (int i = 0; i < N; ++i)
