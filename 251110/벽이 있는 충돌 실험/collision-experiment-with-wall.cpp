@@ -85,7 +85,8 @@ bool check()
 int main()
 {
 	cin >> T;
-	
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 	while (T-- > 0)
 	{
 		cin >> N >> M;
