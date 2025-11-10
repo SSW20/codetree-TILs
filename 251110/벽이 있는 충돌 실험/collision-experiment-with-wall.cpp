@@ -12,7 +12,7 @@ char d;
 
 void clear();
 bool check();
-void move()
+void move(int &count)
 {
 	for (int i = 1; i <= N; ++i)
 		for (int k = 1; k <= N; ++k)
@@ -23,7 +23,11 @@ void move()
 				else
 				{
 					if (arrTemp[i + 1][k]== 0) arrTemp[i + 1][k] = 'D';
-					else arrTemp[i + 1][k] = 0;
+					else
+					{
+						arrTemp[i + 1][k] = 0;
+						count -= 2;
+					}
 				}
 			}
 			else if (arr[i][k] == 'R')
@@ -32,7 +36,12 @@ void move()
 				else
 				{
 					if (arrTemp[i][k + 1] == 0) arrTemp[i][k + 1] = 'R';
-					else arrTemp[i][k + 1] = 0;
+					else
+					{
+						arrTemp[i][k + 1] = 0;
+						count -= 2;
+
+					}
 				}
 			}
 			else if (arr[i][k] == 'U')
@@ -41,7 +50,12 @@ void move()
 				else
 				{
 					if (arrTemp[i - 1][k] == 0) arrTemp[i - 1][k] = 'U';
-					else arrTemp[i - 1][k] = 0;
+					else
+					{
+						arrTemp[i - 1][k] = 0;
+						count -= 2;
+
+					}
 				}
 			}
 			else if (arr[i][k] == 'L')
@@ -50,7 +64,12 @@ void move()
 				else 
 				{
 					if (arrTemp[i][k - 1] == 0) arrTemp[i][k - 1] = 'L';
-					else arrTemp[i][k - 1] = 0;
+					else
+					{
+						arrTemp[i][k - 1] = 0;
+						count -= 2;
+
+					}
 				}
 			}
 			else
@@ -71,12 +90,6 @@ void clear()
 }
 bool check()
 {
-	int count = 0;
- 	for (int i = 1; i <= N; ++i)
-		for (int k = 1; k <= N; ++k)
-			if (arr[i][k] != 0) ++count;
-	if (count <= 1) return true;
-
 	for (int i = 1; i <= N; ++i)
 		for (int k = 1; k <= N; ++k)
 			if (arr[i][k] != arrOrigin[i][k]) return false;
@@ -90,22 +103,18 @@ int main()
 	while (T-- > 0)
 	{
 		cin >> N >> M;
+		int count = M;
 		while (M-- > 0)
 		{
 			cin >> x >> y >> d;
 			arr[x][y] = d;
 			arrOrigin[x][y] = d;
 		}
-		move();
-		while (!check())
+		move(count);
+		while (count > 1 && !check())
 		{
-			move();
+			move(count);
 		}
-
-		int count = 0;
-		for (int i = 1; i <= N; ++i)
-			for (int k = 1; k <= N; ++k)
-				if (arr[i][k] != 0) ++count;
 		cout << count << '\n';
 
 		for (int i = 1; i <= N; ++i)
