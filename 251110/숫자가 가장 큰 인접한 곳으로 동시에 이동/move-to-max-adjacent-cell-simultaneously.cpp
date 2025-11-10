@@ -5,7 +5,7 @@ int grid[21][21];
 int ans[21][21];
 int ansTemp[21][21];
 int dx[4] = { -1,1,0,0 };
-int dy[4] = { 0,0,1,-1};
+int dy[4] = { 0,0,-1,1};
 int N, M, T, r, c;
 
 int main()
@@ -33,14 +33,11 @@ int main()
 				{
 					
 					int ansX, ansY;
+					int max = -1;
 					for (int d = 0; d < 4; ++d)
 					{
 						int x = i + dx[d];
 						int y = k + dy[d];
-						int max = grid[x][y];
-						ansX = x;
-						ansY = y;
-
 						if (x < 1 || y < 1 || x > N || y > N) continue;
 						if (max < grid[x][y])
 						{
@@ -49,10 +46,7 @@ int main()
 							max = grid[x][y];
 						}
 					}
-					if (ansX != i || ansY != k)
-					{
-						ansTemp[ansX][ansY]++;
-					}
+					ansTemp[ansX][ansY]++;
 				}
 			}
 		}
