@@ -4,7 +4,7 @@ using namespace std;
 
 int n;
 vector<pair<int, int>> v;
-int maxCount = -1;
+int maxCount = 1;
 void Calculate(int idx, int count, int end)
 {
     if (idx >= v.size())
@@ -13,17 +13,21 @@ void Calculate(int idx, int count, int end)
         return;
     }
     
-    for (int i = 1; i < v.size(); ++i)
+    int left = v[idx].first;
+    int right = v[idx].second;
+    if (end >= left)
     {
-       
-            int left = v[idx].first;
-            int right = v[idx].second;
-            if (end >= left)
-            {
-                if (count > maxCount) maxCount = count;
-                return;
-            }
-            Calculate(idx + i, count + 1, right);
+        if (count > maxCount) maxCount = count;
+        return;
+    }
+
+    for (int i = idx; i < v.size(); ++i)
+    {
+        end = v[idx].second;
+        for (int k = idx + 1; k < v.size(); ++k)
+        {
+            Calculate(idx + k, count + 1, right);
+        }
     }
 }
 int main() {
@@ -34,7 +38,7 @@ int main() {
         cin >> x >> y;
         v.push_back(make_pair(x, y));
     }
-    Calculate(0, 0, -1);
+    Calculate(0, 1, -1);
     cout << maxCount;
 
     // Please write your code here.
