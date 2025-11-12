@@ -17,8 +17,7 @@ void Calculate(int idx, int count, int end)
     int right = v[idx].second;
     if (end >= left)
     {
-        if (count > maxCount) maxCount = count;
-        return;
+       return;
     }
 
     for (int i = idx; i < v.size(); ++i)
@@ -29,6 +28,8 @@ void Calculate(int idx, int count, int end)
             Calculate(idx + k, count + 1, right);
         }
     }
+
+    if (count > maxCount) maxCount = count;
 }
 int main() {
     cin >> n;
