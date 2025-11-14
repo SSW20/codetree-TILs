@@ -14,7 +14,6 @@ void Calc(int idx, int total)
         ansMax = max(ansMax, total);
         return;
     }
-
     char sign = expr[idx];
     char alp = expr[idx + 1];
 
@@ -26,6 +25,7 @@ void Calc(int idx, int total)
             {
                 alpha[alp - 'a'] = i;
                 Calc(idx + 2, total + i);
+                alpha[alp - 'a'] = 0;
             }
         }
         else
@@ -40,7 +40,8 @@ void Calc(int idx, int total)
             for (int i = 1; i <= 4; ++i)
             {
                 alpha[alp - 'a'] = i;
-                Calc(idx + 2, total -i);
+                Calc(idx + 2, total - i);
+                alpha[alp - 'a'] = 0;
             }
         }
         else
@@ -56,6 +57,7 @@ void Calc(int idx, int total)
             {
                 alpha[alp - 'a'] = i;
                 Calc(idx + 2, total * i);
+                alpha[alp - 'a'] = 0;
             }
         }
         else
