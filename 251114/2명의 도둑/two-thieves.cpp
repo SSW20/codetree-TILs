@@ -39,10 +39,10 @@ int FindMax(int x, int y)
 
 bool Possible(int x1, int y1, int x2, int y2)
 {
-	if (y1 + M >= N || y2 + M >= N) return false;
+	if (y1 + M - 1 >= N || y2 + M - 1 >= N) return false;
 	if (x1 != x2) return true;
-	if (y1 + M <= y2) return true;
-	return false;
+	if (y1 + M - 1 >= y2 || y2 + M - 1 <= y1) return false;
+	return true;
 }
 
 int main()
