@@ -4,8 +4,8 @@
 using namespace std;
 
 string expr;
-int ansMax = 4;
-vector<int> alpha(4);
+int ansMax = -1;
+vector<int> alpha(6);
 
 void Calc(int idx, int total)
 {
