@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <climits>
 using namespace std;
 
 string expr;
-int ansMax = -1;
+int ansMax = INT_MIN;
 vector<int> alpha(6);
 
 void Calc(int idx, int total)
@@ -70,10 +71,14 @@ int main() {
     cin >> expr;
 
     // Please write your code here.
-    alpha[expr[0] - 'a'] = 4;
+    
 
 
-    Calc(1, 4);
+    for (int i = 1; i <= 4; ++i)
+    {
+        alpha[expr[0] - 'a'] = i;
+        Calc(1, i);
+    }
     cout << ansMax;
 
     return 0;
