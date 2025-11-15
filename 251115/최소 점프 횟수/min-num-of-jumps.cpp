@@ -11,13 +11,13 @@ void Select(int cnt, int curIdx)
     {
         return;
     }
-    if (curIdx == n)
+    if (curIdx == n-1)
     {
         ansMin = min(ansMin, cnt);
         return;
     }
 
-    for (int i = 0; i <= jump[cnt]; ++i)
+    for (int i = 0; i <= jump[curIdx]; ++i)
     {
         Select(cnt + 1, curIdx + i);
     }
