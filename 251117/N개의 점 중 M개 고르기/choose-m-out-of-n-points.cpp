@@ -2,30 +2,48 @@
 #include <vector>
 #include <algorithm>
 #include <climits>
+#include <cmath>
 using namespace std;
 
 int n, m;
 vector<pair<int, int>> lines;
+vector<pair<int, int>> selectLines;
+
 int ansMin = INT_MAX;
-int Cal(int min, int max)
+int Cal()
 {
-    int x = lines[max].first - lines[min].first;
-    int y = lines[max].second - lines[min].second;
-    return x * x + y * y;
+    int length = selectLines.size();
+    sort(selectLines.begin(), selectLines.end());
+
+    int x = selectLines[0].first - selectLines[length - 1].first;
+    int y = selectLines[0].second - selectLines[length - 1].second;
+    int maxVal = pow(x, 2) + pow(y, 2);
+
+    for (int i = 1; i < length - 1; ++i)
+    {
+        int tempX = selectLines[i].first - selectLines[length - 1].first;
+        int tempY = selectLines[i].second - selectLines[length - 1].second;
+        int temp = pow(tempX, 2) + pow(tempY, 2);
+        if (temp > maxVal)
+        {
+            maxVal = temp;
+        }
+    }
+    return maxVal;
 }
 
-void Select(int idx, int cnt, int minId,  int maxId)
+void Select(int idx, int cnt)
 {
     if (cnt == m)
     {
-        ansMin = min(ansMin, Cal(minId, maxId));
+        ansMin = min(ansMin, Cal());
         return;
     }
     for (int i = idx; i < lines.size(); ++i)
     {
-        if (cnt == 0) minId = i;
-        if (cnt == m - 1) maxId = i;
-        Select(i + 1, cnt + 1, minId, maxId);
+        selectLines.push_back(lines[i]);
+        Select(i +  1, cnt + 1);
+        selectLines.pop_back();
     }
 }
 
@@ -38,7 +56,7 @@ int main() {
     }
     sort(lines.begin(), lines.end());
 
-    Select(0, 0, -1, -1);
+    Select(0, 0);
     cout << ansMin;
 
     // Please write your code here.
