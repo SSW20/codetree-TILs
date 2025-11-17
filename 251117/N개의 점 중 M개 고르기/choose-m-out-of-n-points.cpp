@@ -13,20 +13,16 @@ int ansMin = INT_MAX;
 int Cal()
 {
     int length = selectLines.size();
-    sort(selectLines.begin(), selectLines.end());
+    int maxVal = -1;
 
-    int x = selectLines[0].first - selectLines[length - 1].first;
-    int y = selectLines[0].second - selectLines[length - 1].second;
-    int maxVal = pow(x, 2) + pow(y, 2);
-
-    for (int i = 1; i < length - 1; ++i)
+    for (int i = 0; i < length; ++i)
     {
-        int tempX = selectLines[i].first - selectLines[length - 1].first;
-        int tempY = selectLines[i].second - selectLines[length - 1].second;
-        int temp = pow(tempX, 2) + pow(tempY, 2);
-        if (temp > maxVal)
+        for (int k = i + 1; k < length; ++k)
         {
-            maxVal = temp;
+            int x = selectLines[i].first - selectLines[k].first;
+            int y = selectLines[i].second - selectLines[k].second;
+            int temp = x * x + y * y;
+            if (maxVal < temp) maxVal = temp;
         }
     }
     return maxVal;
@@ -42,7 +38,7 @@ void Select(int idx, int cnt)
     for (int i = idx; i < lines.size(); ++i)
     {
         selectLines.push_back(lines[i]);
-        Select(i +  1, cnt + 1);
+        Select(i + 1, cnt + 1);
         selectLines.pop_back();
     }
 }
@@ -54,7 +50,6 @@ int main() {
         cin >> x >> y;
         lines.push_back(make_pair(x, y));
     }
-    sort(lines.begin(), lines.end());
 
     Select(0, 0);
     cout << ansMin;
