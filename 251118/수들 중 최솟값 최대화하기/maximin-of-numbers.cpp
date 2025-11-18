@@ -1,26 +1,30 @@
 #include <iostream>
-
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 int n;
 int grid[10][10];
 int visited[10];
+vector<int> v;
 int ansMax = -1;
-void Select(int row, int total)
+void Select(int row)
 {
     if (row == n)
     {
-        ansMax = max(ansMax, total);
+        sort(v.begin(), v.end());
+        ansMax = max(ansMax, v[0]);
         return;
     }
-
     for (int i = 0; i < n; ++i)
     {
         if (visited[i] == 1) continue;
         visited[i] = 1;
-        if (total > grid[row][i]) total = grid[row][i];
-        Select(row + 1,total);
+        v.push_back(grid[row][i]);
+        Select(row + 1);
         visited[i] = 0;
+        v.pop_back();
+
     }
 }
 
@@ -32,7 +36,7 @@ int main() {
             cin >> grid[i][j];
         }
     }
-    Select(0, 1000000);
+    Select(0);
     cout << ansMax;
     // Please write your code here.
 
