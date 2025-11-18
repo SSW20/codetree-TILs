@@ -10,17 +10,20 @@ int visitedX[10];
 
 void CalcX(int cnt, int total, int lastCity)
 {
-    if (cnt == n)
+    if (cnt == n - 1)
     {
-        total += A[lastCity][0];
-        ansMinX = min(ansMinX, total);
+        if (A[lastCity][0] > 0)
+        {
+            total += A[lastCity][0];
+            ansMinX = min(ansMinX, total);
+        }
         return;
     }
 
+    visitedX[lastCity] = 1;
     for (int i = 0; i < n; ++i)
     { 
         if (visitedX[i] || A[lastCity][i] == 0) continue;
-        visitedX[i] = 1;
         CalcX(cnt + 1, total + A[lastCity][i], i);
         visitedX[i] = 0;
     }
