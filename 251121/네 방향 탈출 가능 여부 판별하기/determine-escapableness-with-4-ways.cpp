@@ -5,19 +5,19 @@ using namespace std;
 int n, m;
 int a[100][100];
 int v[100][100];
-queue<pair<int,int>> q;
+queue<pair<int, int>> q;
 
 void Find()
 {
     int dx[4] = { 1,-1,0,0 };
     int dy[4] = { 0,0,1,-1 };
-
+    q.push(make_pair(0, 0));
+    v[0][0] = 1;
 
     while (!q.empty())
     {
         int cur_x = q.front().first;
         int cur_y = q.front().second;
-
 
         q.pop();
 
@@ -29,7 +29,7 @@ void Find()
             if (x < 0 || y < 0 || x >= n || y >= m) continue;
             if (a[x][y] == 0 || v[x][y] == 1) continue;
             q.push(make_pair(x, y));
-            v[cur_x][cur_y] = 1;
+            v[x][y] = 1;
         }
     }
 }
@@ -44,8 +44,6 @@ int main() {
         }
     }
 
-    q.push(make_pair(0, 0));
-    v[0][0] = 1;
     Find();
 
     if (v[n - 1][m - 1] == 1) cout << 1;
@@ -54,3 +52,4 @@ int main() {
 
     return 0;
 }
+
