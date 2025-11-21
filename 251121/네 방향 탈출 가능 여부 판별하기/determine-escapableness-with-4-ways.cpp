@@ -18,7 +18,7 @@ void Find()
         int cur_x = q.front().first;
         int cur_y = q.front().second;
 
-        v[cur_x][cur_y] = 1;
+
         q.pop();
 
         for (int d = 0; d < 4; ++d)
@@ -29,6 +29,7 @@ void Find()
             if (x < 0 || y < 0 || x >= n || y >= m) continue;
             if (a[x][y] == 0 || v[x][y] == 1) continue;
             q.push(make_pair(x, y));
+            v[cur_x][cur_y] = 1;
         }
     }
 }
@@ -44,6 +45,7 @@ int main() {
     }
 
     q.push(make_pair(0, 0));
+    v[0][0] = 1;
     Find();
 
     if (v[n - 1][m - 1] == 1) cout << 1;
