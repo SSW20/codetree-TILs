@@ -32,7 +32,7 @@ int main() {
         visited[r][c] = 1;
         int h = grid[r][c];
 
-        int maxR = -1, maxC = -1, maxH = -1;
+        int maxR = r, maxC = c, maxH = -1;
 
         while (!q.empty())
         {
