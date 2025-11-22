@@ -34,6 +34,7 @@ void clear()
 
 pair<int,int> Find()
 {
+    int minX = 300, minY = 300;
     for (int i = 0; i < N; ++i)
     {
         for (int k = 0; k < M; ++k)
@@ -46,11 +47,17 @@ pair<int,int> Find()
                     int y = k + dy[d];
 
                     if (x < 0 || y < 0 || x >= N || y >= M || visited[x][y] == 1) continue;
-                    if (a[x][y] == 0) return make_pair(i, k);
+                    if (a[x][y] == 0)
+                    {
+                        minX = min(minX, x);
+                        minY = min(minY, y);
+                    }
                 }
             }
         }
     }
+
+    return make_pair(minX, minY);
 }
 
 
