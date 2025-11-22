@@ -61,7 +61,7 @@ int main() {
                     if (maxH == grid[nx][ny])
                     {
                         if (maxR > nx) { maxR = nx; maxC = ny; }
-                        if( maxR == nx) {if(maxC > ny)  maxR = nx; maxC = ny;}
+                        if( maxR == nx) {if(maxC > ny) { maxR = nx; maxC = ny;}}
                     }
                 }
 
