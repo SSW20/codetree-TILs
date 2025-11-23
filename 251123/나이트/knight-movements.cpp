@@ -17,7 +17,7 @@ int main() {
     queue<pair<int, int>> q;
     q.push({ r1,c1 });
     visited[r1][c1] = 1;
-    
+
     while (!q.empty())
     {
         int cx = q.front().first;
@@ -37,8 +37,7 @@ int main() {
             q.push({ x,y });
         }
     }
-
-    if (path[r2][c2])
+    if (visited[r2][c2])
     {
         cout << path[r2][c2];
     }
