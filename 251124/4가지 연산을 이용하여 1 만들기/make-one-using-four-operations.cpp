@@ -4,12 +4,12 @@
 using namespace std;
 
 int N;
-
+int num[1000001];
 int main() {
     cin >> N;
 
     // Please write your code here.
-    queue<pair<int,int>> q;
+    queue<pair<int, int>> q;
     q.push({ N,0 });
     int ans = 0;
     while (!q.empty() && N != 1)
@@ -26,9 +26,10 @@ int main() {
             ans = count + 1;
             break;
         }
-        else 
+        else if (temp <= 1000000)
         {
             q.push({ temp, count + 1 });;
+            num[temp] = count + 1;
         }
 
         temp = val - 1;
@@ -37,9 +38,10 @@ int main() {
             ans = count + 1;
             break;
         }
-        else
+        else if (temp > 0 && num[temp] == 0)
         {
             q.push({ temp, count + 1 });
+            num[temp] = count + 1;
         }
 
         if (val % 2 == 0)
@@ -50,9 +52,10 @@ int main() {
                 ans = count + 1;
                 break;
             }
-            else
+            else if (num[temp] == 0)
             {
                 q.push({ temp, count + 1 });
+                num[temp] = count + 1;
             }
         }
 
@@ -64,9 +67,10 @@ int main() {
                 ans = count + 1;
                 break;
             }
-            else
+            else if (num[temp] == 0)
             {
                 q.push({ temp, count + 1 });
+                num[temp] = count + 1;
             }
         }
     }
