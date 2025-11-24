@@ -12,7 +12,7 @@ int main() {
     queue<pair<int,int>> q;
     q.push({ N,0 });
     int ans = 0;
-    while (!q.empty())
+    while (!q.empty() && N != 1)
     {
         int val = q.front().first;
         int count = q.front().second;
