@@ -3,20 +3,19 @@
 using namespace std;
 
 int n;
-int f[1001];
+long long int f[1001];
 
-int Fibo(int N)
+long long int Fibo(int N)
 {
     if (f[N] != 0) return f[N];
     if (N <= 2) return f[N];
     else
     {
-        int temp = (((Fibo(N - 1) * 2) % 1000000007) + ((Fibo(N - 2) * 3)) % 1000000007);
+        f[N] = (((Fibo(N - 1) * 2) % 1000000007) + ((Fibo(N - 2) * 3)) % 1000000007) % 1000000007;
         for (int i = 0; i <= N - 3; ++i)
         {
-            temp = (temp + 2 * f[i] % 1000000007) % 1000000007;
+            f[N] = (f[N] + 2 * f[i] ) % 1000000007;
         }
-        f[N] = temp;
     }
     return f[N];
 }
