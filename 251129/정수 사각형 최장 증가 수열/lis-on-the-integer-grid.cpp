@@ -1,11 +1,10 @@
 #include <iostream>
-
+#include <stack>
 using namespace std;
 
 int n;
 int grid[500][500];
 long long int ans[500][500];
-
 int dx[4] = { 0,0,1,-1 };
 int dy[4] = { 1,-1,0,0 };
 int main() {
@@ -20,23 +19,30 @@ int main() {
 
     // Please write your code here.
 
+    stack<pair<int, int>> st;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
         {
-            for (int d = 0; d < 4; ++d)
+            st.push({ i,j });
+            while (!st.empty())
             {
-                int x = i + dx[d];
-                int y = j + dy[d];
-                if (x < 0 || y < 0 || x >= n || y >= n) continue;
-                if (grid[x][y] > grid[i][j] && ans[x][y] <= ans[i][j])
+                int curX = st.top().first;
+                int curY = st.top().second;
+                st.pop();
+                for (int d = 0; d < 4; ++d)
                 {
-                    ans[x][y] = ans[i][j] + 1;
+                    int x = curX + dx[d];
+                    int y = curY + dy[d];
+                    if (x < 0 || y < 0 || x >= n || y >= n) continue;
+                    if (grid[x][y] <= grid[curX][curY] || ans[x][y] > ans[curX][curY] + 1) continue;
+                    st.push({ x,y });
+                    ans[x][y] = ans[curX][curY] + 1;
                 }
             }
         }
     }
 
-   long long int ansMax = -1;
+    long long int ansMax = -1;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
         {
