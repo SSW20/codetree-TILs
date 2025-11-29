@@ -4,7 +4,7 @@ using namespace std;
 
 int n;
 int grid[500][500];
-unsigned long long int ans[500][500];
+long long int ans[500][500];
 
 int dx[4] = { 0,0,1,-1 };
 int dy[4] = { 1,-1,0,0 };
@@ -36,7 +36,7 @@ int main() {
         }
     }
 
-    unsigned long long int ansMax = -1;
+   long long int ansMax = -1;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
         {
