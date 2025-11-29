@@ -17,7 +17,7 @@ int Travel(int cnt, int r, int c)
         int x = r + dx[d];
         int y = c + dy[d];
         if (x < 0 || y < 0 || x >= n || y >= n) continue;
-        if (grid[x][y] <= grid[r][c] || ans[x][y] > ans[r][c]) continue;
+        if (grid[x][y] <= grid[r][c]) continue;
         maxCnt = max(maxCnt, cnt + Travel(cnt, x, y));
         
     }
@@ -47,10 +47,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
         {
-            ansMax = max(ansMax, ans[i][j]);
+            ansMax = max(ansMax, ans[i][j] + 1);
         }
     }
-    cout << ansMax + 1;
+    cout << ansMax;
 
 
     return 0;
