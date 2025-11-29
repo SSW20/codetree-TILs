@@ -20,6 +20,8 @@ int main() {
     // Please write your code here.
 
     stack<pair<int, int>> st;
+    long long int ansMax = -1;
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
         {
@@ -37,16 +39,9 @@ int main() {
                     if (grid[x][y] <= grid[curX][curY] || ans[x][y] > ans[curX][curY] + 1) continue;
                     st.push({ x,y });
                     ans[x][y] = ans[curX][curY] + 1;
+                    ansMax = max(ans[x][y], ansMax);
                 }
             }
-        }
-    }
-
-    long long int ansMax = -1;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++)
-        {
-            ansMax = max(ansMax, ans[i][j]);
         }
     }
 
