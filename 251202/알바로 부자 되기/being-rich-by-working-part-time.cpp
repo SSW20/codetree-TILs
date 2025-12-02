@@ -19,7 +19,7 @@ int main() {
         {
             if (s[i] > e[j])
             {
-                dp[i] = max(dp[i], dp[j] + dp[i]);
+                dp[i] = max(dp[i], dp[j] + p[i]);
             }
         }
     }
