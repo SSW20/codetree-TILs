@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <climits>
 using namespace std;
 
 int N, M;
@@ -14,7 +15,7 @@ int main() {
 
     for (int i = 0; i <= M; i++)
     {
-        dp[i] = -10;
+        dp[i] = INT_MIN;
     }
     dp[0] = 0;
     // Please write your code here.
@@ -22,15 +23,15 @@ int main() {
     {
         for (int k = 0; k < N; ++k)
         {
-            if(dp[k] == -1) continue;
             if (i >= coin[k])
             {
+                if (dp[i - coin[k]] == INT_MIN) continue;
                 dp[i] = max(dp[i], dp[i - coin[k]] + 1);
             }
         }
     }
 
-    if (dp[M] == -10) cout << -1;
+    if (dp[M] == INT_MIN) cout << -1;
     else cout << dp[M];
 
     return 0;
