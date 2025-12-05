@@ -4,7 +4,7 @@ using namespace std;
 
 int N, M;
 int coin[100];
-int dp[101];
+int dp[100001];
 int main() {
     cin >> N >> M;
 
@@ -27,7 +27,11 @@ int main() {
         }
     }
 
-    cout << dp[M];
+    if (dp[M] == 100001) {
+        cout << -1;
+    } else {
+        cout << dp[M];
+    }
 
     return 0;
 }
