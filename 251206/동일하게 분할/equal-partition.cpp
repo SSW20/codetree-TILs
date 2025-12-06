@@ -32,7 +32,7 @@ int main() {
     {
         if (dp[i] == true)
         {
-            if (total % 2 == i)
+            if (total / 2 == i)
             {
                 flag = true;
                 break;
