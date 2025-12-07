@@ -3,7 +3,7 @@
 using namespace std;
 
 int n;
-long long int arr[100000];
+long long int arr[100001];
 long long int dp[100001];
 int main() {
     cin >> n;
