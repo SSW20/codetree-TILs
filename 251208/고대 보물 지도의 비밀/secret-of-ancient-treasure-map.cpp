@@ -38,9 +38,9 @@ int main() {
     }
 
     long long int ansMax = INT_MIN;
-    for (int i = 0; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j <= k; ++j)
+        for (int j = 1; j <= k; ++j)
         {
             ansMax = max(ansMax, dp[i][j]);
         }
