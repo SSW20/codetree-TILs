@@ -33,7 +33,7 @@ int main() {
         {
             for (int k = 9; k > -1; --k)
             {
-                if (dp[i][k] == INT_MIN) continue;
+                if (dp[j][k] == INT_MIN) continue;
                 
                 if (j < 11)
                 {
