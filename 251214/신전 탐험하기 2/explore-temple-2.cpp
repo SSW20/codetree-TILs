@@ -23,28 +23,24 @@ int main() {
     }
     for (int j = 1; j <= 3; ++j)
     {
-        for (int k = 1; k <= 3; ++k)
-        {
-            dp[0][j][k] = 0;
-        }
+       dp[1][j][j] = map[1][j];
     }
 
 
 
-    for (int i = 1; i <= n; ++i)
+    for (int i = 2; i <= n; ++i)
     {
         for (int j = 1; j <= 3; ++j)
         {
-            for (int t = 1; t <= 3; ++t)
+            for (int k = 1; k <= 3; ++k)
             {
-                for (int k = 1; k <= 3; ++k)
+                if (j != k)
                 {
-                    if (j != k)
+                    for (int t = 1; t <= 3; ++t)
                     {
-
-                            if (dp[i - 1][k][t] == INT_MIN) continue;
-                            if (i == n && t == j) continue;
-                            dp[i][j][t] = max(dp[i][j][t], dp[i - 1][k][t] + map[i][j]);
+                        if (dp[i - 1][k][t] == INT_MIN) continue;
+                        if (i == n && t == j) continue;
+                        dp[i][j][t] = max(dp[i][j][t], dp[i - 1][k][t] + map[i][j]);
                     }
                 }
             }
