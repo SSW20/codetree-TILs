@@ -54,18 +54,18 @@ int main() {
                     {
                         if (t == j)
                         {
-                            dp[i + 1][k][t] = max(dp[i + 1][k][t], dp[i][k][j] + Calc(i, t));
+                            dp[i + 1][k][t] = max(dp[i + 1][k][t], dp[i][k][j] + Calc(i + 1, t));
                         }
                     }
                     else
                     {
                         if (t == j)
                         {
-                            dp[i + 1][k][t] = max(dp[i + 1][k][t], dp[i][k][j] + Calc(i, t));
+                            dp[i + 1][k][t] = max(dp[i + 1][k][t], dp[i][k][j] + Calc(i + 1, t));
                         }
                         else
                         {
-                            dp[i + 1][k + 1][t] = max(dp[i + 1][k + 1][t], dp[i][k][j] + Calc(i, t));
+                            dp[i + 1][k + 1][t] = max(dp[i + 1][k + 1][t], dp[i][k][j] + Calc(i + 1, t));
                         }
                     }
                 }
