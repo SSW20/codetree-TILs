@@ -5,7 +5,7 @@
 using namespace std;
 
 int n, m, k;
-int dp[11][201][201];
+long long int dp[11][201][201];
 vector<int> ans;
 int main() {
     cin >> n >> m >> k;
@@ -35,17 +35,17 @@ int main() {
 
 
     // 최종 결과를 계산하고 출력합니다.
-    int cur_l = 1;
+    int cur_l = m;
     int cur_m = m;
     for (int i = n; i >= 1; i--) {
         while (dp[i][cur_m][cur_l] < k) {
             k -= dp[i][cur_m][cur_l];
-            cur_l++;
+            cur_l--;
         }
 
         ans.push_back(cur_l);
         cur_m -= cur_l;
-        cur_l = 1;
+        cur_l = m;
     }
     reverse(ans.begin(),ans.end());
     for (int x : ans)
