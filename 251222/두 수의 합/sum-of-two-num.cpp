@@ -29,7 +29,11 @@ int main() {
     {
         if (umap.find(k - arr[i]) != umap.end())
         {
-            total += umap[k-arr[i]];
+            if (k - arr[i] == arr[i])
+            {
+                if (umap[k - arr[i]] > 1) total += umap[k-arr[i]] - 1;
+            }
+            else total += umap[k-arr[i]];
         }
     }
 
