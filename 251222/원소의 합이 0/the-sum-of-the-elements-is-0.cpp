@@ -28,19 +28,17 @@ int main() {
         for (int j = 0; j < n; j++)
             umap1[A[i] + B[j]]++;
 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            umap2[C[i] + D[j]]++;
 
     int total = 0;
-    for (auto it1 = umap1.begin(); it1 != umap.end(); it1++)
-        for (auto it2 = umap2.begin(); it2 != umap.end(); it2++)
+
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
         {
-            if (it1->first + it2->first == 0)
-            {
-                total += it1->second * it2->second;
-            }
+            umap2[C[i] + D[j]]++;
+            total += umap1[-(C[i] + D[j])];
         }
+
+
 
     cout << total;
     return 0;
