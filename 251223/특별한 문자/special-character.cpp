@@ -16,20 +16,20 @@ int main() {
         umap[c]++;
     }
 
-    char c = 'A';
-    for (auto it = umap.begin(); it != umap.end(); ++it)
+    char ans = 'A';
+    for (char c : word)
     {
-        if (it->second == 1)
+        if (umap[c] == 1)
         {
-            c =  it->first;
+            ans = c;
             break;
-        }
+       }
     }
     
-    if (c == 'A')
+    if (ans == 'A')
     {
         cout << "None";
     }
-    else cout << c;
+    else cout << ans;
     return 0;
 }
