@@ -27,7 +27,9 @@ int main() {
 				for (int t = 0; t < n; ++t)
 				{
 					string temp = "";
-					temp += A[t][i] + A[t][j] + A[t][k];
+					temp += A[t][i]; 
+					temp += A[t][j];
+					temp += A[t][k];
 					uset.insert(temp);
 				}
 
@@ -36,7 +38,9 @@ int main() {
 				for (int t = 0; t < n; ++t)
 				{
 					string temp = "";
-					temp += B[t][i] + B[t][j] + B[t][k];
+					temp += B[t][i];
+					temp += B[t][j];
+					temp += B[t][k];
 					
 					if (uset.find(temp) != uset.end())
 					{
