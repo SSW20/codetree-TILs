@@ -1,12 +1,14 @@
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
+#include <queue>
 using namespace std;
 
 int N, G;
-unordered_set<int> NotSelected[250001];
+unordered_set<int> Groups[250001];
+vector<int> personInGroups[100001];
 unordered_set<int> Selected;
-
 int main() {
     cin >> N >> G;
     int groupSize, person;
@@ -14,27 +16,37 @@ int main() {
         cin >> groupSize;
         for (int j = 0; j < groupSize; j++) {
             cin >> person;
-            if (j == 0) Selected.insert(person);
-            else NotSelected[i + 1].insert(person);
+            Groups[i + 1].insert(person);
+            personInGroups[person].push_back(i + 1);
         }
     }
 
-    for (int i = 1; i <= G; ++i)
+
+    queue<int> q;
+    q.push(1);
+    Selected.insert(1);
+    while (!q.empty())
     {
-        for (auto it = Selected.begin(); it != Selected.end(); ++it)
+        int curPerson = q.front();
+        q.pop();
+
+        
+
+        for (int group : personInGroups[curPerson])
         {
-            if (NotSelected[i].size() == 0) break;
-            if (NotSelected[i].find(*it) != NotSelected[i].end())
+            Groups[group].erase(curPerson);
+            if (Groups[group].size() == 1)
             {
-                NotSelected[i].erase(*it);
+                int lastPerson = *Groups[group].begin();
+                if (Selected.find(lastPerson) == Selected.end())
+                {
+                    q.push(lastPerson);
+                    Selected.insert(lastPerson);
+                }
             }
         }
-
-        if (NotSelected[i].size() == 1)
-        {
-            Selected.insert(*NotSelected[i].begin());
-        }
     }
+    
 
     cout << Selected.size();
 
