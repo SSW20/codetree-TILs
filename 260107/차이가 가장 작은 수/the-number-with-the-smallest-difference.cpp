@@ -24,9 +24,10 @@ int main() {
             ans = min(ans, *s.lower_bound(arr[i] + m) - arr[i]);
         }
 
-        if (s.upper_bound(arr[i] - m) != s.begin())
-        {
-            ans = min(ans, arr[i] - *(s.upper_bound(-arr[i] + m)--));
+        set<int>::iterator it = s.upper_bound(arr[i] - m);
+        if(it != s.begin()) {
+            it--;
+            ans = min(ans, arr[i] - *it);
         }
     }
         
