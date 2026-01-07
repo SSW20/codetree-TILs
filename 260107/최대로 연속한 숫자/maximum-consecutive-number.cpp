@@ -2,7 +2,7 @@
 #include <set>
 #include <algorithm>
 #include <vector>
-
+#include <climits>
 using namespace std;
 
 int main() {
@@ -23,7 +23,7 @@ int main() {
         int x;
         cin >> x;
 
-        auto it = range.upper_bound({ x,x });
+        auto it = range.upper_bound({ x,INT_MAX });
         it--;
 
         int start = it->first;
