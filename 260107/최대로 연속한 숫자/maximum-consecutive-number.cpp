@@ -33,12 +33,10 @@ int main() {
         length.erase(length.find(len));
         range.erase(it);
 
-        if (start <= x - 1) 
         {
             range.insert({ start, x - 1 });
             length.insert(x - start);
         }
-        if (x + 1 <= end)
         {
             range.insert({ x + 1, end });
             length.insert(end - x);
